@@ -11,7 +11,6 @@ struct Sach {
     char tenSach[50];
     char tacGia[50];
     int namXuatBan;
-    float giaTien;
     char theLoai[50];
 };
 
@@ -31,6 +30,3 @@ struct Node {
     SinhVien data;
     Node* next;
 };
-
-
-
