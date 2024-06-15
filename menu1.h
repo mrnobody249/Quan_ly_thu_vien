@@ -213,9 +213,12 @@ void TraSach() {
     cout << "\tTra sach thanh cong" << endl;
     return;
 }
-void ToanBoSach() {
+void ToanBoSach(bool ASorted = false) {
     cout << endl;
-    SapXepSachTheoMa(s);
+    if (ASorted){
+        BubbleSortSach(s);
+    } else SapXepSachTheoMa(s);
+    //Mac dinh sap xep theo ma, ASorted true => sx theo Ten
     PSach temp = s;
     while (temp != nullptr) {
         cout << temp->S.MaSach << "\t" << temp->S.TenSach << "\t" << temp->S.TheLoai << "\t"
@@ -224,17 +227,19 @@ void ToanBoSach() {
     }
 }
 
-void ToanBoSinhVien(){
+void ToanBoSinhVien(bool ASorted = false){
     cout << endl;
-    //SapXepSachTheoMa(s);
     PSV temp = sv;
+    if (ASorted){
+        BubbleSortSinhVien(sv);
+    } //else SapXepSachTheoMa(s);
     while (temp != nullptr) {
         cout << "MSV: " << temp->SV.MSV << ", HoTen: " << temp->SV.HoTen << endl;
         temp = temp->next;
     }
 }
 
-void SachMotSinhVienMuon(bool BSort) {
+void SachMotSinhVienMuon(bool ASort = false) {
     cin.ignore();
     cout << "\t\tLiet ke nhung sach duoc muon cua mot sinh vien" << endl;
     cout << endl;
@@ -257,10 +262,11 @@ void SachMotSinhVienMuon(bool BSort) {
         cout << "\t\tSinh vien khong muon sach nao" << endl;
         return;
     }
-    if (BSort) SortSachMuonAlph(sm);
+    if (ASort) BubbleSortSachMuon(sm);
+    //ASort true => sx theo Ten
     while (sm != nullptr) {
         cout << "MaSach: " << sm->P->S.MaSach << ", TenSach: " << sm->P->S.TenSach << ", TheLoai: " << sm->P->S.TheLoai << ", TacGia: "
-            << sm->P->S.TacGia << "\t\t" << sm->P->S.NamXuatBan << endl;
+            << sm->P->S.TacGia << ", NamXuatBan: " << sm->P->S.NamXuatBan << endl;
         sm = sm->next;
     }
 }

@@ -43,7 +43,7 @@ int main() {
                 ToanBoSinhVien();
                 break;
             case 11:
-                SachMotSinhVienMuon(0);
+                SachMotSinhVienMuon();
                 break;
             case 12:
                 ToanBoSachDuocMuon();
@@ -51,11 +51,10 @@ int main() {
             case 13:
                 break;
             case 14:
-                SortLSVienMSV(sv);
-                ToanBoSinhVien();
+                ToanBoSinhVien(1);
                 break;
             case 15:
-                SortLSachAlph(s);
+                ToanBoSach(1);
                 break;
             case 16:
                 SachMotSinhVienMuon(1);
@@ -64,7 +63,7 @@ int main() {
                 Thoat();
                 break;
         }
-        if(chon != 14) {
+        if(chon != 17) {
             cout << endl;
             cout << "========================="<<endl;
             cout << "=> Nhan Enter de tro ve !";
@@ -73,6 +72,6 @@ int main() {
             system("clear");
         }
     }
-    while(chon != 14);
+    while(chon != 17);
 	return 0;
 }

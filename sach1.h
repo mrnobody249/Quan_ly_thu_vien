@@ -252,79 +252,69 @@ void TraSach(PSach ps, PSV psv) {
     }
 }
 
-vector<Sach> ConvertSachVector(LSach LS){
-    vector<Sach> SachV;
-    while(LS != nullptr) {
-        SachV.push_back(LS->S);
-        LS = LS->next;
-    }
-    return SachV;
-}
+void BubbleSortSach(SachNode*& head) {
+    if (!head) return;
 
-vector<SinhVien> ConvertSVienVector(LSV LSVien){
-    vector<SinhVien> SVienV;
-    while(LSVien != nullptr) {
-        SVienV.push_back(LSVien->SV);
-        LSVien = LSVien->next;
-    }
-    return SVienV;
-}
+    bool swapped;
+    SachNode* ptr;
+    SachNode* lptr = nullptr;
 
-vector<PSach> ConvertSachMVector(LSM LSM) {
-    vector<PSach> SachMV;
-    while (LSM != nullptr) {
-        SachMV.push_back(LSM->P);
-        LSM = LSM->next;
-    }
-    return SachMV;
-}
+    do {
+        swapped = false;
+        ptr = head;
 
-void SortLSachAlph(LSach& LS){
-    vector<Sach> SachV = ConvertSachVector(LS);
-    sort(SachV.begin(), SachV.end(), [](Sach a, Sach b) {
-        return strcmp(a.TenSach, b.TenSach) > 0;
-    });
-    LSach temp = nullptr;
-    for(Sach& a : SachV){
-        ThemSach(temp, a.MaSach, a.TenSach, a.TheLoai, a.TacGia, a.NamXuatBan);
-    }
-    LS = temp;
-}
-
-void SortLSVienMSV(LSV& LSVien){
-    vector<SinhVien> SVienV = ConvertSVienVector(LSVien);
-    sort(SVienV.begin(), SVienV.end(), [](SinhVien a, SinhVien b) {
-        return strcmp(a.MSV, b.MSV) > 0;
-    });
-    LSV temp = nullptr;
-    for (SinhVien& a : SVienV) {
-        ThemSinhVien(temp, a.MSV, a.HoTen);
-    }
-    LSVien = temp;
-}
-
-void SortSachMuonAlph(LSM& LSachM) {
-    vector<PSach> SachMV = ConvertSachMVector(LSachM);
-    sort(SachMV.begin(), SachMV.end(), [](PSach a, PSach b) {
-        return a->S.TenSach < b->S.TenSach;
-    });
-
-    LSM temp = nullptr;
-    for (auto& sach : SachMV) {
-        auto newNode = new SachMuon;
-        newNode->P = sach;
-        newNode->next = nullptr;
-
-        if (temp == nullptr) {
-            temp = newNode;
-        } else {
-            LSM current = temp;
-            while (current->next != nullptr) {
-                current = current->next;
+        while (ptr->next != lptr) {
+            if (strcmp(ptr->S.TenSach, ptr->next->S.TenSach) > 0) {
+                swap(ptr->S, ptr->next->S);
+                swapped = true;
             }
-            current->next = newNode;
+            ptr = ptr->next;
         }
-    }
-    LSachM = temp;
+        lptr = ptr;
+    } while (swapped);
+}
+
+void BubbleSortSinhVien(SinhVienNode*& head) {
+    if (!head) return;
+
+    bool swapped;
+    SinhVienNode* ptr;
+    SinhVienNode* lptr = nullptr;
+
+    do {
+        swapped = false;
+        ptr = head;
+
+        while (ptr->next != lptr) {
+            if (strcmp(ptr->SV.MSV, ptr->next->SV.MSV) > 0) {
+                swap(ptr->SV, ptr->next->SV);
+                swapped = true;
+            }
+            ptr = ptr->next;
+        }
+        lptr = ptr;
+    } while (swapped);
+}
+
+void BubbleSortSachMuon(LSM& head) {
+    if (!head) return;
+
+    bool swapped;
+    LSM ptr;
+    LSM lptr = nullptr;
+
+    do {
+        swapped = false;
+        ptr = head;
+
+        while (ptr->next != lptr) {
+            if (strcmp(ptr->P->S.TenSach, ptr->next->P->S.TenSach) > 0) {
+                swap(ptr->P, ptr->next->P);
+                swapped = true;
+            }
+            ptr = ptr->next;
+        }
+        lptr = ptr;
+    } while (swapped);
 }
 #endif
