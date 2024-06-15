@@ -270,6 +270,15 @@ vector<SinhVien> ConvertSVienVector(LSV LSVien){
     return SVienV;
 }
 
+vector<PSach> ConvertSachMVector(LSM LSM) {
+    vector<PSach> SachMV;
+    while (LSM != nullptr) {
+        SachMV.push_back(LSM->P);
+        LSM = LSM->next;
+    }
+    return SachMV;
+}
+
 void SortLSachAlph(LSach& LS){
     vector<Sach> SachV = ConvertSachVector(LS);
     sort(SachV.begin(), SachV.end(), [](Sach a, Sach b) {
@@ -294,5 +303,28 @@ void SortLSVienMSV(LSV& LSVien){
     LSVien = temp;
 }
 
+void SortSachMuonAlph(LSM& LSachM) {
+    vector<PSach> SachMV = ConvertSachMVector(LSachM);
+    sort(SachMV.begin(), SachMV.end(), [](PSach a, PSach b) {
+        return a->S.TenSach < b->S.TenSach;
+    });
 
+    LSM temp = nullptr;
+    for (auto& sach : SachMV) {
+        auto newNode = new SachMuon;
+        newNode->P = sach;
+        newNode->next = nullptr;
+
+        if (temp == nullptr) {
+            temp = newNode;
+        } else {
+            LSM current = temp;
+            while (current->next != nullptr) {
+                current = current->next;
+            }
+            current->next = newNode;
+        }
+    }
+    LSachM = temp;
+}
 #endif

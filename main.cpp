@@ -43,7 +43,7 @@ int main() {
                 ToanBoSinhVien();
                 break;
             case 11:
-                SachMotSinhVienMuon();
+                SachMotSinhVienMuon(0);
                 break;
             case 12:
                 ToanBoSachDuocMuon();
@@ -53,11 +53,13 @@ int main() {
             case 14:
                 SortLSVienMSV(sv);
                 ToanBoSinhVien();
+                break;
             case 15:
                 SortLSachAlph(s);
-                ToanBoSach();
+                break;
             case 16:
-                //to be implemented
+                SachMotSinhVienMuon(1);
+                break;
             case 17:
                 Thoat();
                 break;

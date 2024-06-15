@@ -234,7 +234,7 @@ void ToanBoSinhVien(){
     }
 }
 
-void SachMotSinhVienMuon() {
+void SachMotSinhVienMuon(bool BSort) {
     cin.ignore();
     cout << "\t\tLiet ke nhung sach duoc muon cua mot sinh vien" << endl;
     cout << endl;
@@ -252,11 +252,12 @@ void SachMotSinhVienMuon() {
     cout << "Ma sach\t\tTen sach\t\tThe loai\t\tTac gia\t\tNam xuat ban" << endl;
     cout << endl;
     PSM sm = temp->SV.SachMuon;
-    if (temp == nullptr) {
+    if (sm == nullptr) {
         cout << endl;
         cout << "\t\tSinh vien khong muon sach nao" << endl;
         return;
     }
+    if (BSort) SortSachMuonAlph(sm);
     while (sm != nullptr) {
         cout << "MaSach: " << sm->P->S.MaSach << ", TenSach: " << sm->P->S.TenSach << ", TheLoai: " << sm->P->S.TheLoai << ", TacGia: "
             << sm->P->S.TacGia << "\t\t" << sm->P->S.NamXuatBan << endl;
