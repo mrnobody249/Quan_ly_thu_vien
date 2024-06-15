@@ -20,7 +20,10 @@ void Menu() {
     cout << "11. Liet ke nhung sach duoc muon cua mot sinh vien" << endl;
     cout << "12. Liet ke toan bo sach duoc muon trong thu vien" << endl;
     cout << "13. Liet ke toan bo sach cua mot tac gia" << endl;
-    cout << "14. Thoat khoi he thong" << endl;
+    cout << "14. Sap xep toan bo sinh vien theo msv" << endl;
+    cout << "15. Sap xep toan bo sach theo ten" << endl;
+    cout << "16. Sap xep toan bo sach duoc muon cua mot sinh vien theo ten" << endl;
+    cout << "17. Thoat khoi he thong" << endl;
     cout << "=> Moi chon chuc nang: ";
 }
 void ThemSach() {
@@ -226,7 +229,7 @@ void ToanBoSinhVien(){
     //SapXepSachTheoMa(s);
     PSV temp = sv;
     while (temp != nullptr) {
-        cout << temp->SV.MSV << "\t" << temp->SV.HoTen << endl;
+        cout << "MSV: " << temp->SV.MSV << ", HoTen: " << temp->SV.HoTen << endl;
         temp = temp->next;
     }
 }
@@ -255,7 +258,7 @@ void SachMotSinhVienMuon() {
         return;
     }
     while (sm != nullptr) {
-        cout << sm->P->S.MaSach << "\t\t" << sm->P->S.TenSach << "\t\t" << sm->P->S.TheLoai << "\t\t"
+        cout << "MaSach: " << sm->P->S.MaSach << ", TenSach: " << sm->P->S.TenSach << ", TheLoai: " << sm->P->S.TheLoai << ", TacGia: "
             << sm->P->S.TacGia << "\t\t" << sm->P->S.NamXuatBan << endl;
         sm = sm->next;
     }

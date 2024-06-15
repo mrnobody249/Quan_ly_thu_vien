@@ -2,6 +2,7 @@
 #define SACH_H
 
 #include <cstring>
+#include <vector>
 
 using namespace std;
 
@@ -250,4 +251,48 @@ void TraSach(PSach ps, PSV psv) {
         A = A->next;
     }
 }
+
+vector<Sach> ConvertSachVector(LSach LS){
+    vector<Sach> SachV;
+    while(LS != nullptr) {
+        SachV.push_back(LS->S);
+        LS = LS->next;
+    }
+    return SachV;
+}
+
+vector<SinhVien> ConvertSVienVector(LSV LSVien){
+    vector<SinhVien> SVienV;
+    while(LSVien != nullptr) {
+        SVienV.push_back(LSVien->SV);
+        LSVien = LSVien->next;
+    }
+    return SVienV;
+}
+
+void SortLSachAlph(LSach& LS){
+    vector<Sach> SachV = ConvertSachVector(LS);
+    sort(SachV.begin(), SachV.end(), [](Sach a, Sach b) {
+        return strcmp(a.TenSach, b.TenSach) > 0;
+    });
+    LSach temp = nullptr;
+    for(Sach& a : SachV){
+        ThemSach(temp, a.MaSach, a.TenSach, a.TheLoai, a.TacGia, a.NamXuatBan);
+    }
+    LS = temp;
+}
+
+void SortLSVienMSV(LSV& LSVien){
+    vector<SinhVien> SVienV = ConvertSVienVector(LSVien);
+    sort(SVienV.begin(), SVienV.end(), [](SinhVien a, SinhVien b) {
+        return strcmp(a.MSV, b.MSV) > 0;
+    });
+    LSV temp = nullptr;
+    for (SinhVien& a : SVienV) {
+        ThemSinhVien(temp, a.MSV, a.HoTen);
+    }
+    LSVien = temp;
+}
+
+
 #endif

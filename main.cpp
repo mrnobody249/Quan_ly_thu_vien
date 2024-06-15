@@ -51,6 +51,14 @@ int main() {
             case 13:
                 break;
             case 14:
+                SortLSVienMSV(sv);
+                ToanBoSinhVien();
+            case 15:
+                SortLSachAlph(s);
+                ToanBoSach();
+            case 16:
+                //to be implemented
+            case 17:
                 Thoat();
                 break;
         }
