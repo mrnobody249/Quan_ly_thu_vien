@@ -253,8 +253,6 @@ void TraSach(PSach ps, PSV psv) {
 }
 
 void BubbleSortSach(SachNode*& head) {
-    if (!head) return;
-
     bool swapped;
     SachNode* ptr;
     SachNode* lptr = nullptr;
@@ -275,8 +273,6 @@ void BubbleSortSach(SachNode*& head) {
 }
 
 void BubbleSortSinhVien(SinhVienNode*& head) {
-    if (!head) return;
-
     bool swapped;
     SinhVienNode* ptr;
     SinhVienNode* lptr = nullptr;
@@ -297,8 +293,6 @@ void BubbleSortSinhVien(SinhVienNode*& head) {
 }
 
 void BubbleSortSachMuon(LSM& head) {
-    if (!head) return;
-
     bool swapped;
     LSM ptr;
     LSM lptr = nullptr;
