@@ -93,11 +93,15 @@ int main() {
                 break;
             case 27:
                 ThongKeSachTheoNamXuatBan();
-            case 28:
+		break;
+	    case 28:
+		ThongKeSachMuon();
+		break;
+            case 29:
                 Thoat();
                 break;
         }
-        if(chon != 28) {
+        if(chon != 29) {
             cout << endl;
             cout << "========================="<<endl;
             cout << "=> Nhan Enter de tro ve !";
@@ -106,6 +110,6 @@ int main() {
             system("clear");
         }
     }
-    while(chon != 28);
+    while(chon != 29);
 	return 0;
 }
