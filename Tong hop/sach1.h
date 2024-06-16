@@ -256,34 +256,10 @@ void TraSach(PSach ps, PSV psv) {
 
 //Nguyen Duc Tu
 
-void BubbleSortSach(LSach head) { //Tung: Chuyen SachNode* thanh LSach
-                                   //Tung: Ham chi can truyen gia tri, khong can truyen tham chieu
-    //Tung: Chuyen check head la nullptr sang ham ben menu1.h
+void BubbleSortSinhVien(LSV head) {
     bool swapped;
-    PSach ptr;  //Tung: Chuyen SachNode* thanh PSach
-    PSach lptr = nullptr;   //Tung: Chuyen SachNode* thanh PSach
-
-    do {
-        swapped = false;
-        ptr = head;
-
-        while (ptr->next != lptr) {
-            if (strcmp(ptr->S.TenSach, ptr->next->S.TenSach) > 0) {
-                swap(ptr->S, ptr->next->S);
-                swapped = true;
-            }
-            ptr = ptr->next;
-        }
-        lptr = ptr;
-    } while (swapped);
-}
-
-void BubbleSortSinhVien(LSV head) {//Tung: Chuyen SinhVienNode* thanh LSV
-                                   //Tung: Ham chi can truyen gia tri, khong can truyen tham chieu
-    //Tung: Chuyen check head la nullptr sang ham ben menu1.h
-    bool swapped;
-    PSV ptr;    //Tung: Chuyen SinhVienNode* thanh PSV
-    PSV lptr = nullptr; //Tung: Chuyen SinhVienNode* thanh PSV
+    PSV ptr;
+    PSV lptr = nullptr;
 
     do {
         swapped = false;
@@ -300,12 +276,10 @@ void BubbleSortSinhVien(LSV head) {//Tung: Chuyen SinhVienNode* thanh LSV
     } while (swapped);
 }
 
-void BubbleSortSachMuon(LSM head) {//Tung: Ham chi can truyen gia tri, khong can truyen tham chieu
-    //Tung: Chuyen kiem tra head la nullptr sang ham ben menu1.h
-
+void BubbleSortSachMuon(LSM head) {
     bool swapped;
-    PSM ptr;    //Tung: Chuyen LSM thanh PSM
-    PSM lptr = nullptr; //Tung: Chuyen LSM thanh PSM
+    PSM ptr;
+    PSM lptr = nullptr;
 
     do {
         swapped = false;
