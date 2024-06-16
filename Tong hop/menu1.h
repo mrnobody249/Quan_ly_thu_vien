@@ -237,16 +237,13 @@ void TraSach() {    //Thu thu thong bao tra sach
     cout << "\tTra sach thanh cong" << endl;
     return;
 }
-void ToanBoSach(bool ASorted = false) { //Liet ke toan bo sach
+void ToanBoSach() { //Liet ke toan bo sach
     cout << endl;
-    if(s == nullptr){ //Tung: Bo sung truong hop khong co sach
+    if(s == nullptr){
         cout << "Khong co quyen sach nao" << endl;
         return;
     }
-    if (ASorted){
-        BubbleSortSach(s); // Liet ke theo thu tu ten sach tang dan
-    }
-    else SapXepSachTheoMa(s); //Mac dinh sap xep theo ma, ASorted true => sx theo Ten
+    SapXepSachTheoMa(s);
     PSach temp = s;
     while (temp != nullptr) {
         cout << temp->S.MaSach << "\t" << temp->S.TenSach << "\t" << temp->S.TheLoai << "\t"
@@ -256,7 +253,6 @@ void ToanBoSach(bool ASorted = false) { //Liet ke toan bo sach
 }
 
 void ToanBoSinhVien(){ // Liet ke toan bo sinh vien theo thu tu ma sinh vien tang dan
-                        //Tung: bo Asorted ma cho sap xep luon
     cout << endl;
     if(sv == nullptr){ //Tung: Bo sung truong hop khong co sinh vien
         cout << "Khong co sinh vien nao" << endl;
@@ -427,7 +423,7 @@ void TacGiaDuocMuonItSachNhat() {
     cout << "So sach duoc muon: " << min << endl;
 }
 
-void SachDuocMuonNhieuNhat() {
+void SachDuocMuonNhieuNhat() {    //Dau sach duoc muon nhieu nhat
     cout << endl;
     PSach temp = s;
     int max = 0;
@@ -455,7 +451,7 @@ void SachDuocMuonNhieuNhat() {
     cout << "So lan muon: " << max << endl;
 }
 
-void SachDuocMuonItNhat() {
+void SachDuocMuonItNhat() {    //Dau sach duoc muon it nhat
     cout << endl;
     PSach temp = s;
     int min = 100000;
