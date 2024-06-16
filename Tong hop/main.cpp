@@ -104,7 +104,7 @@ int main() {
             cout << "=> Nhan Enter de tro ve !";
             cin.ignore();
             cin.get();
-            system("clear");
+            system("cls");
         }
     }
     while(chon != 28);
