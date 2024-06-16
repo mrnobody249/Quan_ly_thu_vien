@@ -284,7 +284,6 @@ void SachMotSinhVienMuon() {// Liet ke toan bo sach sinh vien muon theo thu tu t
         cout << "\t\tMa sinh vien vua nhap khong ton tai. Vui long thu lai !" << endl;
         return;
     }
-    cout << "Ma sach\t\tTen sach\t\tThe loai\t\tTac gia\t\tNam xuat ban" << endl;
     cout << endl;
     PSM sm = temp->SV.SachMuon;
     if (sm == nullptr) {
@@ -366,9 +365,11 @@ void CacSachCuaMotTacGia() {    //Liet ke nhung sach cua tac gia
     PSach temp = s; //Tung bo sung truong hop ko co sach cua tac gia
     bool found = false;
     while (temp != nullptr) {
-        if (!strcmp(temp->S.TacGia, TacGia))
+        if (!strcmp(temp->S.TacGia, TacGia)){
+            found = true;
             cout << temp->S.MaSach << "\t" << temp->S.TenSach << "\t" << temp->S.TheLoai << "\t"
                 << temp->S.TacGia << "\t" << temp->S.NamXuatBan << "\t" << temp->S.svm << endl;
+        }
         temp = temp->next;
     }
     if (!found) { //Tung bo sung truong hop ko co sach cua tac gia
@@ -382,17 +383,19 @@ void TacGiaDuocMuonNhieuSachNhat() {
     int max = 0;
     char tenTacGia[100];
     while(temp != nullptr){
-        int count = 0;
-        PSach p = s;
-        while(p != nullptr){
-            if(strcmp(p->S.TacGia, temp->S.TacGia) == 0){
-                count++;
+        if(temp->S.svm[0] != '\0'){
+            int count = 0;
+            PSach p = s;
+            while(p != nullptr){
+                if(strcmp(p->S.TacGia, temp->S.TacGia) == 0 && p->S.svm[0] != '\0'){
+                    count++;
+                }
+                p = p->next;
             }
-            p = p->next;
-        }
-        if(count > max){
-            max = count;
-            strcpy(tenTacGia, temp->S.TacGia);
+            if(count > max){
+                max = count;
+                strcpy(tenTacGia, temp->S.TacGia);
+            }
         }
         temp = temp->next;
     }
@@ -409,7 +412,7 @@ void TacGiaDuocMuonItSachNhat() {
         int count = 0;
         PSach p = s;
         while(p != nullptr){
-            if(strcmp(p->S.TacGia, temp->S.TacGia) == 0){
+            if(strcmp(p->S.TacGia, temp->S.TacGia) == 0 && p->S.svm[0] != '\0'){
                 count++;
             }
             p = p->next;
