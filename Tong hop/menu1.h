@@ -2,6 +2,9 @@
 #define MENU_H
 
 #include "sach1.h"
+#include <map>
+#include <ostream>
+#include <fstream>
 
 void Menu() {
     cout << "\tChuong Trinh Quan Ly Thu Vien" << endl;
@@ -31,7 +34,10 @@ void Menu() {
     cout << "22. Sach duoc muon it nhat cua mot tac gia" << endl;
     cout << "23. Sinh vien muon nhieu sach nhat" << endl;
     cout << "24. Sinh vien muon it sach nhat" << endl;
-    cout << "25. Thoat khoi he thong" << endl;
+    cout << "25. Xuat toan bo du lieu ra file" << endl;
+    cout << "26. Tai du lieu tu file vao he thong" << endl;
+    cout << "27. Thong ke sach theo nam xuat ban" << endl;
+    cout << "28. Thoat khoi he thong" << endl;
     cout << "=> Moi chon chuc nang: ";
 }
 void ThemSach() {
@@ -602,6 +608,119 @@ void SVMuongItSachNhat() {
 
 
 
+// Nguyen Duc Tu
+void LuuDuLieu() {
+    ofstream file("library_data.txt");
+    if (!file.is_open()) {
+        cout << "Khong the mo tep de luu du lieu." << endl;
+        return;
+    }
+
+    // Tu: Luu sach
+    PSach tempSach = s;
+    while (tempSach != nullptr) {
+        file << "SACH" << endl;
+        file << tempSach->S.MaSach << endl;
+        file << tempSach->S.TenSach << endl;
+        file << tempSach->S.TheLoai << endl;
+        file << tempSach->S.TacGia << endl;
+        file << tempSach->S.NamXuatBan << endl;
+        file << tempSach->S.svm << endl;
+        tempSach = tempSach->next;
+    }
+
+    // Tu: Luu sinh vien
+    PSV tempSV = sv;
+    while (tempSV != nullptr) {
+        file << "SINHVIEN" << endl;
+        file << tempSV->SV.MSV << endl;
+        file << tempSV->SV.HoTen << endl;
+        PSM sm = tempSV->SV.SachMuon;
+        while (sm != nullptr) {
+            file << "SACHMUON" << endl;
+            file << sm->P->S.MaSach << endl;
+            sm = sm->next;
+        }
+        tempSV = tempSV->next;
+    }
+
+    file.close();
+    cout << "Luu du lieu thanh cong!" << endl;
+}
+
+void TaiDuLieu() {
+    ifstream file("library_data.txt");
+    if (!file.is_open()) {
+        cout << "Khong the mo tep de tai du lieu." << endl;
+        return;
+    }
+
+    string line;
+    while (getline(file, line)) {
+        if (line == "SACH") {
+            Sach sach;
+            string MaSach, TenSach, TheLoai, TacGia, NamXuatBan;
+            getline(file, MaSach);
+            getline(file, TenSach);
+            getline(file, TheLoai);
+            getline(file, TacGia);
+            sach.NamXuatBan = stoi(NamXuatBan);
+            strcpy(sach.MaSach, MaSach.c_str());
+            strcpy(sach.TenSach, TenSach.c_str());
+            strcpy(sach.TheLoai, TheLoai.c_str());
+            strcpy(sach.TacGia, TacGia.c_str());
+
+            ThemSach(s, sach.MaSach, sach.TenSach, sach.TheLoai, sach.TacGia, sach.NamXuatBan);
+        } else if (line == "SINHVIEN") {
+            SinhVien svien;
+            string MSV, HoTen;
+            getline(file, MSV);
+            getline(file, HoTen);
+
+            strcpy(svien.MSV, MSV.c_str());
+            strcpy(svien.HoTen, HoTen.c_str());
+
+            ThemSinhVien(sv, svien.MSV, svien.HoTen);
+        }
+    }
+
+    file.close();
+    cout << "Tai du lieu thanh cong!" << endl;
+}
+
+// Tu: Thống kê số lượng sách theo năm xuất bản
+void ThongKeSachTheoNamXuatBan() {
+    map<int, int> thongKe;
+    PSach temp = s;
+    while (temp != nullptr) {
+        thongKe[temp->S.NamXuatBan]++;
+        temp = temp->next;
+    }
+
+    cout << "Thong ke sach theo nam xuat ban:" << endl;
+    for (const auto& entry : thongKe) {
+        cout << entry.first << ": " << entry.second << " quyen" << endl;
+    }
+}
+
+// Tu: Thống kê số lượng sách đang được mượn và chưa được mượn
+void ThongKeSachMuon() {
+    int sachMuon = 0;
+    int sachChuaMuon = 0;
+    PSach temp = s;
+    while (temp != nullptr) {
+        if (temp->S.svm[0] == '\0') {
+            sachChuaMuon++;
+        } else {
+            sachMuon++;
+        }
+        temp = temp->next;
+    }
+
+    cout << "Thong ke sach muon va chua muon:" << endl;
+    cout << "Sach muon: " << sachMuon << " quyen" << endl;
+    cout << "Sach chua muon: " << sachChuaMuon << " quyen" << endl;
+}
 void Thoat() {
     cout << endl;
     cout << "\t\tXin chao va hen gap lai!" << endl;

@@ -86,10 +86,18 @@ int main() {
                 SVMuongItSachNhat();
                 break;
             case 25:
+                LuuDuLieu();
+                break;
+            case 26:
+                TaiDuLieu();
+                break;
+            case 27:
+                ThongKeSachTheoNamXuatBan();
+            case 28:
                 Thoat();
                 break;
         }
-        if(chon != 25) {
+        if(chon != 28) {
             cout << endl;
             cout << "========================="<<endl;
             cout << "=> Nhan Enter de tro ve !";
@@ -98,6 +106,6 @@ int main() {
             system("clear");
         }
     }
-    while(chon != 25);
+    while(chon != 28);
 	return 0;
 }
