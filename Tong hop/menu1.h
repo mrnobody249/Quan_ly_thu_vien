@@ -6,7 +6,7 @@
 #include <ostream>
 #include <fstream>
 
-void Menu() {
+void Menu() {    //Ham in ra menu
     cout << "\tChuong Trinh Quan Ly Thu Vien" << endl;
     cout << "\t\t\tNhom 16" << endl;
     cout << endl;
@@ -40,7 +40,7 @@ void Menu() {
     cout << "28. Thoat khoi he thong" << endl;
     cout << "=> Moi chon chuc nang: ";
 }
-void ThemSach() {
+void ThemSach() {    //Thu thu them sach
     cout << "\t\tNhap them mot cuon sach" << endl;
     cout << endl;
     char MS[10], Ten[100], Loai[100], TG[100];
@@ -66,7 +66,7 @@ void ThemSach() {
     cout << "\t\tThem sach thanh cong." << endl;
 }
 
-void SuaSach() {
+void SuaSach() {    //Thu thu sua thong tin sach
     cout << "\t\tSua thong tin sach" << endl;
     cout << endl;
     char Finding[10];
@@ -97,7 +97,7 @@ void SuaSach() {
     cout << "\t\tSua thong tin sach thanh cong." << endl;
     return;
 }
-void XoaSach() {
+void XoaSach() {    //Thu thu xoa sach
     cout << "\t\tXoa mot cuon sach" << endl;
     cout << endl;
     char Finding[10];
@@ -120,7 +120,7 @@ void XoaSach() {
     cout << "\tXoa sach thanh cong" << endl;
     return;
 }
-void ThemSinhVien() {
+void ThemSinhVien() {    //Thu thu them sinh vien
     cout << "\t\tNhap thong tin sinh vien" << endl;
     cout << endl;
     char msv[10], hoten[100];
@@ -138,7 +138,7 @@ void ThemSinhVien() {
     cout << endl;
     cout << "\t\tThem sinh vien thanh cong ^^" << endl;
 }
-void SuaSinhVien() {
+void SuaSinhVien() {    //Thu thu sua thong tin sinh vien
     cout << "\t\tSua thong tin sinh vien" << endl;
     cout << endl;
     char newHoTen[100];
@@ -159,7 +159,7 @@ void SuaSinhVien() {
     cout << "\t\tSua thong tin sinh vien thanh cong." << endl;
     return;
 }
-void XoaSinhVien() {
+void XoaSinhVien() {    //Thu thu xoa sinh vien
     cout << "\t\tXoa thong tin sinh vien" << endl;
     cout << endl;
     char Finding[10];
@@ -182,7 +182,7 @@ void XoaSinhVien() {
     cout << "\tXoa sinh vien thanh cong" << endl;
     return;
 }
-void MuonSach() {
+void MuonSach() {    //Thu thu cho muon sach
     cout << "\t\tMuon sach" << endl;
     cout << endl;
     char msv[10], ms[10];
@@ -212,7 +212,7 @@ void MuonSach() {
     cout << endl;
     cout << "Muon sach thanh cong" << endl;
 }
-void TraSach() {
+void TraSach() {    //Thu thu thong bao tra sach
     cout << "\t\tTra sach" << endl;
     cout << endl;
     char ms[10];
@@ -270,7 +270,6 @@ void ToanBoSinhVien(){ // Liet ke toan bo sinh vien theo thu tu ma sinh vien tan
 }
 
 void SachMotSinhVienMuon() {// Liet ke toan bo sach sinh vien muon theo thu tu ten sach tang dan
-                                                //Tung: bo Asorted ma cho sap xep luon
     cin.ignore();
     cout << "\t\tLiet ke nhung sach duoc muon cua mot sinh vien" << endl;
     cout << endl;
@@ -299,11 +298,11 @@ void SachMotSinhVienMuon() {// Liet ke toan bo sach sinh vien muon theo thu tu t
         sm = sm->next;
     }
 }
-void ToanBoSachDuocMuon(){
+void ToanBoSachDuocMuon(){    //Liet ke toan bo sach duoc muon
     cout << endl;
     SapXepSachTheoMa(s);
     PSach temp = s;
-    bool found = false; //Bo sung truong hop khong co sach nao duoc muon
+    bool found = false;
     while (temp != nullptr) {
         if((temp->S.svm[0] != '\0')){
             found = true;
@@ -325,7 +324,7 @@ void ToanBoSachDuocMuon(){
 
 
 
-void SachChuaMuon() {
+void SachChuaMuon() {    //Liet ke nhung sach khong duoc muon
     cout << endl;
     SapXepSachTheoMa(s);
     PSach temp = s;
@@ -337,7 +336,7 @@ void SachChuaMuon() {
     }
 }
 
-void CacSachCuaNam() {
+void CacSachCuaNam() {    //Liet ke nhung sach trong nam
     cout << endl;
     int nam;
     cout << "Nhap nam xuat ban: ";
@@ -357,7 +356,7 @@ void CacSachCuaNam() {
     }
 }
 
-void CacSachCuaMotTacGia() {
+void CacSachCuaMotTacGia() {    //Liet ke nhung sach cua tac gia
     cout << endl;
     char TacGia[100];
     cin.ignore();
@@ -556,7 +555,7 @@ void SachMuonItNhatCuaTacGia() {
     }
 }
 
-void SVMuonNhieuSachNhat() {
+void SVMuonNhieuSachNhat() {    //Sinh vien muon nhieu sach nhat
     cout << endl;
     PSV temp = sv;
     int max = 0;
@@ -578,7 +577,7 @@ void SVMuonNhieuSachNhat() {
     cout << "So sach muon: " << max << endl;
 }
 
-void SVMuongItSachNhat() {
+void SVMuongItSachNhat() {    //Sinh vien muon it sach nhat
     cout << endl;
     PSV temp = sv;
     int min = 100000;
@@ -609,7 +608,7 @@ void SVMuongItSachNhat() {
 
 
 // Nguyen Duc Tu
-void LuuDuLieu() {
+void LuuDuLieu() {    //Ghi du lieu vao file txt
     ofstream file("library_data.txt");
     if (!file.is_open()) {
         cout << "Khong the mo tep de luu du lieu." << endl;
@@ -648,7 +647,7 @@ void LuuDuLieu() {
     cout << "Luu du lieu thanh cong!" << endl;
 }
 
-void TaiDuLieu() {
+void TaiDuLieu() {    //Doc du lieu tu file txt
     ifstream file("library_data.txt");
     if (!file.is_open()) {
         cout << "Khong the mo tep de tai du lieu." << endl;
