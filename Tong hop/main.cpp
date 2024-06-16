@@ -41,67 +41,64 @@ int main() {
                 ToanBoSach();
                 break;
             case 10:
-                ToanBoSach(1);
-                break;
-            case 11:
                 ToanBoSinhVien();
                 break;
-            case 12:
+            case 11:
                 SachMotSinhVienMuon();
                 break;
-            case 13:
+            case 12:
                 ToanBoSachDuocMuon();
                 break;
-            case 14:
+            case 13:
                 SachChuaMuon();
                 break;
-            case 15:
+            case 14:
                 CacSachCuaNam();
                 break;
-            case 16:
+            case 15:
                 CacSachCuaMotTacGia();
                 break;
-            case 17:
+            case 16:
                 TacGiaDuocMuonNhieuSachNhat();
                 break;
-            case 18:
+            case 17:
                 TacGiaDuocMuonItSachNhat();
                 break;
-            case 19:
+            case 18:
                 SachDuocMuonNhieuNhat();
                 break;
-            case 20:
+            case 19:
                 SachDuocMuonItNhat();
                 break;
-            case 21:
+            case 20:
                 SachMuonNhieuNhatCuaTacGia();
                 break;
-            case 22:
+            case 21:
                 SachMuonItNhatCuaTacGia();
                 break;
-            case 23:
+            case 22:
                 SVMuonNhieuSachNhat();
                 break;
-            case 24:
+            case 23:
                 SVMuongItSachNhat();
                 break;
-            case 25:
+            case 24:
                 LuuDuLieu();
                 break;
-            case 26:
+            case 25:
                 TaiDuLieu();
                 break;
-            case 27:
+            case 26:
                 ThongKeSachTheoNamXuatBan();
 		break;
-	    case 28:
+	    case 27:
 		ThongKeSachMuon();
 		break;
-            case 29:
+            case 28:
                 Thoat();
                 break;
         }
-        if(chon != 29) {
+        if(chon != 28) {
             cout << endl;
             cout << "========================="<<endl;
             cout << "=> Nhan Enter de tro ve !";
@@ -110,6 +107,6 @@ int main() {
             system("clear");
         }
     }
-    while(chon != 29);
+    while(chon != 28);
 	return 0;
 }
