@@ -33,11 +33,9 @@ void Menu() {    //Ham in ra menu
     cout << "21. Sach duoc muon it nhat cua mot tac gia" << endl;
     cout << "22. Sinh vien muon nhieu sach nhat" << endl;
     cout << "23. Sinh vien muon it sach nhat" << endl;
-    cout << "24. Xuat toan bo du lieu ra file" << endl;
-    cout << "25. Tai du lieu tu file vao he thong" << endl;
-    cout << "26. Thong ke sach theo nam xuat ban" << endl;
-    cout << "27. Thong ke sach muon" << endl;
-    cout << "28. Thoat khoi he thong" << endl;
+    cout << "24. Thong ke sach theo nam xuat ban" << endl;
+    cout << "25. Thong ke sach muon" << endl;
+    cout << "27. Thoat khoi he thong" << endl;
     cout << "=> Moi chon chuc nang: ";
 }
 void ThemSach() {    //Thu thu them sach
@@ -607,86 +605,8 @@ void SVMuongItSachNhat() {    //Sinh vien muon it sach nhat
 
 
 // Nguyen Duc Tu
-void LuuDuLieu() {    //Ghi du lieu vao file txt
-    ofstream file("library_data.txt");
-    if (!file.is_open()) {
-        cout << "Khong the mo tep de luu du lieu." << endl;
-        return;
-    }
 
-    // Tu: Luu sach
-    PSach tempSach = s;
-    while (tempSach != nullptr) {
-        file << "SACH" << endl;
-        file << tempSach->S.MaSach << endl;
-        file << tempSach->S.TenSach << endl;
-        file << tempSach->S.TheLoai << endl;
-        file << tempSach->S.TacGia << endl;
-        file << tempSach->S.NamXuatBan << endl;
-        file << tempSach->S.svm << endl;
-        tempSach = tempSach->next;
-    }
-
-    // Tu: Luu sinh vien
-    PSV tempSV = sv;
-    while (tempSV != nullptr) {
-        file << "SINHVIEN" << endl;
-        file << tempSV->SV.MSV << endl;
-        file << tempSV->SV.HoTen << endl;
-        PSM sm = tempSV->SV.SachMuon;
-        while (sm != nullptr) {
-            file << "SACHMUON" << endl;
-            file << sm->P->S.MaSach << endl;
-            sm = sm->next;
-        }
-        tempSV = tempSV->next;
-    }
-
-    file.close();
-    cout << "Luu du lieu thanh cong!" << endl;
-}
-
-void TaiDuLieu() {    //Doc du lieu tu file txt
-    ifstream file("library_data.txt");
-    if (!file.is_open()) {
-        cout << "Khong the mo tep de tai du lieu." << endl;
-        return;
-    }
-
-    string line;
-    while (getline(file, line)) {
-        if (line == "SACH") {
-            Sach sach;
-            string MaSach, TenSach, TheLoai, TacGia, NamXuatBan;
-            getline(file, MaSach);
-            getline(file, TenSach);
-            getline(file, TheLoai);
-            getline(file, TacGia);
-            sach.NamXuatBan = stoi(NamXuatBan);
-            strcpy(sach.MaSach, MaSach.c_str());
-            strcpy(sach.TenSach, TenSach.c_str());
-            strcpy(sach.TheLoai, TheLoai.c_str());
-            strcpy(sach.TacGia, TacGia.c_str());
-
-            ThemSach(s, sach.MaSach, sach.TenSach, sach.TheLoai, sach.TacGia, sach.NamXuatBan);
-        } else if (line == "SINHVIEN") {
-            SinhVien svien;
-            string MSV, HoTen;
-            getline(file, MSV);
-            getline(file, HoTen);
-
-            strcpy(svien.MSV, MSV.c_str());
-            strcpy(svien.HoTen, HoTen.c_str());
-
-            ThemSinhVien(sv, svien.MSV, svien.HoTen);
-        }
-    }
-
-    file.close();
-    cout << "Tai du lieu thanh cong!" << endl;
-}
-
-// Tu: Thống kê số lượng sách theo năm xuất bản
+// Thống kê số lượng sách theo năm xuất bản
 void ThongKeSachTheoNamXuatBan() {
     map<int, int> thongKe;
     PSach temp = s;
@@ -701,7 +621,7 @@ void ThongKeSachTheoNamXuatBan() {
     }
 }
 
-// Tu: Thống kê số lượng sách đang được mượn và chưa được mượn
+// Thống kê số lượng sách đang được mượn và chưa được mượn
 void ThongKeSachMuon() {
     int sachMuon = 0;
     int sachChuaMuon = 0;
