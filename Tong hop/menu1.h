@@ -35,7 +35,7 @@ void Menu() {    //Ham in ra menu
     cout << "23. Sinh vien muon it sach nhat" << endl;
     cout << "24. Thong ke sach theo nam xuat ban" << endl;
     cout << "25. Thong ke sach muon" << endl;
-    cout << "27. Thoat khoi he thong" << endl;
+    cout << "26. Thoat khoi he thong" << endl;
     cout << "=> Moi chon chuc nang: ";
 }
 void ThemSach() {    //Thu thu them sach
