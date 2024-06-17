@@ -355,7 +355,7 @@ void CacSachCuaMotTacGia() {    //Liet ke nhung sach cua tac gia
     cin.ignore();
     cout << "Nhap ten tac gia: ";
     cin.getline(TacGia, 100);
-    PSach temp = s; //Tung bo sung truong hop ko co sach cua tac gia
+    PSach temp = s; 
     bool found = false;
     while (temp != nullptr) {
         if (!strcmp(temp->S.TacGia, TacGia)){
@@ -365,7 +365,7 @@ void CacSachCuaMotTacGia() {    //Liet ke nhung sach cua tac gia
         }
         temp = temp->next;
     }
-    if (!found) { //Tung bo sung truong hop ko co sach cua tac gia
+    if (!found) {
         cout << "Khong co sach nao cua tac gia " << TacGia << endl;
     }
 }
